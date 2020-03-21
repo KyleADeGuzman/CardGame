@@ -1,0 +1,35 @@
+import java.util.ArrayList;
+
+public class CardGameDriver {
+	
+	static ArrayList<Player> players;
+	static Deck deck;
+	
+	public static void main( String[] args ) {
+
+		deck = new Deck();
+		players = new ArrayList<>();
+		players.add( new Player( "Kyle" ));    //adds new player
+		players.add( new Player( "Stephen" )); //adds new player
+		players.add( new Player( "Fabian" ));  //adds new player
+		
+		System.out.println( "Deck has " + deck.size() + " cards."); //Says the size of the deck
+		
+		dealHands( 5 ); // deals 5 hands
+		
+		System.out.println("");
+		for( Player player: players ) System.out.println( player + "\n" ); //
+		System.out.println( "Deck has " + deck.size() + " cards."); //Says the rest of the deck size
+		
+	}
+	
+	private static void dealHands( int cards ) { 
+		System.out.println( "Dealing " + cards + " cards to " + players.size() + " players."); //Says how many cards to how many players
+		for(int i=0;i<cards;i++ ) { //for loop
+			for(Player p : players ) {
+				p.draw(deck);
+			}
+		}
+		
+	}
+}
